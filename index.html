@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JBB - Premium Gaming Tables</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+    
+        /* Header section styling */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000; /* Ensures the header stays above other content */
+            background-color: #fff; /* Ensures background doesn't turn transparent */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    
+        /* Header title styling */
+        header h1 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+    
+        /* Navigation links styling */
+        header nav a {
+            margin-left: 15px;
+            text-decoration: none;
+            color: #000000;
+            font-size: 1rem;
+        }
+    
+        header nav a.active {
+            color: #007bff; /* Highlight color */
+            font-weight: bold;
+        }
+    
+        /* Main slider styling */
+        .main-slider {
+            width: 100%;
+            height: 300px;
+        }
+    
+        /* Container for sections */
+        .container {
+            padding: 20px;
+        }
+    
+        /* Categories section styling */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Ensures responsive grid layout */
+            gap: 15px;
+            margin: 15px 0;
+            padding: 10px;
+            justify-items: center; /* Center-align items in the grid */
+        }
+    
+        .categories:focus {
+            outline: none;
+        }
+    
+        /* Individual category card styling */
+        .category {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            max-width: 200px;
+        }
+    
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Category image styling */
+        .category img {
+            max-width: 100%;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+    
+        /* Featured products section styling */
+        .featured-products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+    
+        /* Individual product card styling */
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: calc(50% - 20px);
+        }
+    
+        .product img, .category img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+    
+        /* Product image styling */
+        .product img {
+            max-width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+    
+        /* Product title styling */
+        .product h3 {
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+    
+        /* Product price styling */
+        .product p {
+            font-size: 0.9rem;
+            margin: 5px 0;
+            color: #555;
+        }
+    
+        /* Inquiry form styling */
+        .inquiry-form {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    
+        /* Form inputs, textarea, and button styling */
+        .inquiry-form input, .inquiry-form textarea, .inquiry-form button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+    
+        /* Footer styling */
+        footer {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+        }
+    
+        /* Responsive styling for mobile devices */
+        @media (max-width: 768px) {
+            .category {
+                max-width: 140px; /* Ensures cards remain compact */
+            }
+    
+            .categories {
+                gap: 10px; /* Smaller gaps for compactness */
+            }
+    
+            .product {
+                width: calc(100% - 20px);
+            }
+    
+            header h1 {
+                font-size: 1.2rem;
+            }
+    
+            header nav a {
+                font-size: 0.9rem;
+                margin-left: 10px;
+            }
+    
+            .main-slider {
+                height: 190px;
+            }
+    
+            .inquiry-form input, .inquiry-form textarea, .inquiry-form button {
+                font-size: 0.9rem;
+            }
+        }
+    </style>    
+</head>
+<body>
+    <!-- Header section with title and navigation -->
+    <header>
+        <h1>JBB</h1>
+        <nav>
+            <a href="#categories">Categories</a>
+            <a href="#featured">Featured</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="slider-container" id="sliderContainer">
+        <div class="main-slider" id="slider">
+            <!-- Each slide as a div -->
+            <div class="slide" data-url="/product1" style="background-image: url('slide1.png');"></div>
+            <div class="slide" data-url="/product2" style="background-image: url('slide2.png');"></div>
+            <div class="slide" data-url="/product3" style="background-image: url('slide3.png');"></div>
+            <div class="slide" data-url="/product4" style="background-image: url('slide4.png');"></div>
+            <div class="slide" data-url="/product5" style="background-image: url('slide5.png');"></div>
+            <div class="slide" data-url="/product6" style="background-image: url('slide6.png');"></div>
+            <div class="slide" data-url="/product7" style="background-image: url('slide7.png');"></div>
+            <div class="slide" data-url="/product8" style="background-image: url('slide8.png');"></div>
+            <div class="slide" data-url="/product8" style="background-image: url('slide9.png');"></div>
+            <div class="slide" data-url="/product8" style="background-image: url('slide10.png');"></div>
+        </div>
+    </div>
+    
+    <style>
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+    
+        .main-slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+    
+        .slide {
+            min-width: 100%; /* Full width of the container */
+            background-size: contain;
+            background-position: center;
+            height: contain; /* Adjust height as needed */
+            cursor: pointer;
+        }
+    </style>
+    
+<script>
+    // Highlight active navigation links
+    const navLinks = document.querySelectorAll('header nav a');
+    let enableScrollListener = true;
+
+    function setActiveLink(event) {
+        event.preventDefault();
+        enableScrollListener = false;
+
+        navLinks.forEach(link => link.classList.remove('active'));
+        this.classList.add('active');
+
+        const targetSection = document.querySelector(this.getAttribute('href'));
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+
+        setTimeout(() => enableScrollListener = true, 1000);
+    }
+
+    navLinks.forEach(link => link.addEventListener('click', setActiveLink));
+
+    window.addEventListener('scroll', () => {
+        if (!enableScrollListener) return;
+
+        navLinks.forEach(link => {
+            const section = document.querySelector(link.getAttribute('href'));
+            const rect = section.getBoundingClientRect();
+            if (rect.top >= 0 && rect.top < window.innerHeight) {
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                link.classList.add('active');
+            }
+        });
+    });
+
+    const categoryCards = document.querySelectorAll('.category');
+    categoryCards.forEach(card => {
+        card.addEventListener('click', () => {
+            alert(`You clicked on ${card.querySelector('p').textContent}`);
+        });
+
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'scale(1.05)';
+            card.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'scale(1)';
+            card.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
+        });
+    });
+
+    // Slider functionality with seamless loop
+    const slider = document.getElementById('slider');
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const slideCount = slides.length;
+
+    // Clone the first and last slides
+    const firstClone = slides[0].cloneNode(true);
+    const lastClone = slides[slides.length - 1].cloneNode(true);
+
+    // Append and prepend clones to the slider
+    slider.appendChild(firstClone);
+    slider.insertBefore(lastClone, slides[0]);
+
+    let currentSlide = 1; // Start at the real first slide
+    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    function changeSlide() {
+        currentSlide++;
+        slider.style.transition = 'transform 0.5s ease-in-out';
+        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // Reset to the actual first slide after reaching the clone
+        if (currentSlide === slideCount + 1) {
+            setTimeout(() => {
+                slider.style.transition = 'none'; // Disable transition
+                currentSlide = 1;
+                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }, 500); // Match transition duration
+        }
+    }
+
+    // Auto slide every 1.5 seconds
+    setInterval(changeSlide, 1500);
+
+    // Swipe functionality for manual navigation
+    let startX;
+    slider.addEventListener('mousedown', (e) => {
+        startX = e.pageX;
+        slider.style.transition = 'none';
+    });
+
+    slider.addEventListener('mouseup', (e) => {
+        const endX = e.pageX;
+        const distance = startX - endX;
+
+        if (distance > 50) { // Swipe left
+            currentSlide++;
+        } else if (distance < -50) { // Swipe right
+            currentSlide--;
+        }
+
+        slider.style.transition = 'transform 0.5s ease-in-out';
+        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // Reset to correct slide if out of bounds
+        if (currentSlide === slideCount + 1) {
+            setTimeout(() => {
+                slider.style.transition = 'none';
+                currentSlide = 1;
+                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }, 500);
+        } else if (currentSlide === 0) {
+            setTimeout(() => {
+                slider.style.transition = 'none';
+                currentSlide = slideCount;
+                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }, 500);
+        }
+    });
+</script>
+
+       
+
+    <div class="container">
+        <!-- Categories section -->
+        <section id="categories">
+            <h2>Explore Our Categories</h2>
+            <div class="categories">
+                <div class="category">
+                    <img src="pool-icon.png" alt="Pool">
+                    <p>Pool Tables</p>
+                </div>
+                <div class="category">
+                    <img src="snooker-icon.png" alt="Snooker">
+                    <p>Snooker Tables</p>
+                </div>
+                <div class="category">
+                    <img src="table-tennis-icon.png" alt="Table Tennis">
+                    <p>Table Tennis</p>
+                </div>
+                <div class="category">
+                    <img src="foosball-icon.png" alt="Foosball">
+                    <p>Foosball Tables</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured products section -->
+        <section id="featured">
+            <h2>Featured Products</h2>
+            <div class="featured-products">
+                <div class="product">
+                    <img src="championship-pool-table.png" alt="Championship Pool Table">
+                    <h3>Championship Pool Table</h3>
+                    <p>₹1,19,999</p>
+                </div>
+                <div class="product">
+                    <img src="strong-1-snooker-table.png" alt="Strong-1 Snooker Table">
+                    <h3>Strong-1 Snooker Table</h3>
+                    <p>₹3,55,000</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inquiry form section -->
+        <section id="contact">
+            <h2>Send an Inquiry</h2>
+            <form class="inquiry-form" action="/submit-inquiry" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="5" placeholder="Your Inquiry" required></textarea>
+                <button type="submit">Send Inquiry</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Footer section -->
+    <footer>
+        <p>&copy; 2024 JBB. All rights reserved.</p>
+    </footer>
+</body>
+</html>
