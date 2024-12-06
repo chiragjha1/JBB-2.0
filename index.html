@@ -88,7 +88,7 @@
             transform: translateY(-5px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        
+    
         /* Category image styling */
         .category img {
             max-width: 100%;
@@ -152,16 +152,22 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center-align all contents */
         }
     
         /* Form inputs, textarea, and button styling */
-        .inquiry-form input, .inquiry-form textarea, .inquiry-form button {
-            width: 100%;
+        .inquiry-form input, 
+        .inquiry-form textarea, 
+        .inquiry-form button {
+            width: calc(100% - 20px); /* Accounts for padding */
             margin: 10px 0;
-            padding: 10px;
+            padding: 10px 15px; /* Ensures padding on the right */
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 1rem;
+            box-sizing: border-box; /* Includes padding in width calculation */
         }
     
         /* Footer styling */
@@ -203,7 +209,8 @@
                 font-size: 0.9rem;
             }
         }
-    </style>    
+    </style>
+        
 </head>
 <body>
     <!-- Header section with title and navigation -->
